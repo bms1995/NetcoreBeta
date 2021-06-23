@@ -9,6 +9,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using NetcoreBeta.Data;
+using NetcoreBeta.Data.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,6 +33,8 @@ namespace NetcoreBeta
         {
 
             services.AddControllers();
+            // Configure services
+            services.AddTransient<BooksService>();
             // configure DBcontext with SQL SERVER
             services.AddDbContext<AppDBContext>(options => options.UseSqlServer(ConnectionString));
 
@@ -61,6 +64,7 @@ namespace NetcoreBeta
             {
                 endpoints.MapControllers();
             });
+            AppDBInitiliazer.Seed(app);
         }
     }
 }
