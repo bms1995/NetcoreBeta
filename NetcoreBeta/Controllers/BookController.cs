@@ -25,5 +25,19 @@ namespace NetcoreBeta.Controllers
             return Ok();
 
         }
+        [HttpGet("Get-books")]
+        public IActionResult GetBooks()
+        {
+            var books=_booksService.GetBooks();
+            return Ok(books);
+
+        }
+        [HttpGet("Get-book-ById/{id}")]
+        public IActionResult GetBookById(int id)
+        {
+            var book = _booksService.GetBookById(id);
+            return Ok(book);
+
+        }
     }
 }
