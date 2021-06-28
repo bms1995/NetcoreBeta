@@ -13,6 +13,20 @@ namespace NetcoreBeta.Data
         {
 
         }
+        protected override void OnModelCreating(ModelBuilder modelbuilder)
+        {
+            modelbuilder.Entity<Book_Author>()
+                .HasOne(b => b.Book)
+                .WithMany(ba => ba.Book_Authors)
+                .HasForeignKey(bi => bi.BookId);
+            modelbuilder.Entity<Book_Author>()
+                .HasOne(b => b.Author)
+                .WithMany(ba => ba.Book_Authors)
+                .HasForeignKey(bi => bi.AuthorId);
+        }
         public DbSet<Book> Books { set; get; }
+        public DbSet<Author> Authors { set; get; }
+        public DbSet<Publisher> Publishers { set; get; }
+        public DbSet<Book_Author> Books_Authors { set; get; }
     }
 }

@@ -39,5 +39,19 @@ namespace NetcoreBeta.Controllers
             return Ok(book);
 
         }
+        [HttpPut("Update-book-ById/{id}")]
+        public IActionResult UpdateBookById(int id,[FromBody]BookVM bookVM)
+        {
+            var book = _booksService.UpdateBook(id, bookVM);
+            return Ok(book);
+
+        }
+        [HttpDelete("Delete-book-ById/{id}")]
+        public IActionResult DeleteBookById(int id)
+        {
+             _booksService.DeleteBook(id);
+            return Ok();
+
+        }
     }
 }
