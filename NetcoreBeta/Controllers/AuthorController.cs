@@ -25,5 +25,12 @@ namespace NetcoreBeta.Controllers
             return Ok();
 
         }
+        [HttpGet("Get-author-with-books/{id}")]
+        public IActionResult GetAuthorwithBooks(int id)
+        {
+            var author = _authorService.GetAuthorWithBooks(id);
+            return Ok(author);
+
+        }
     }
 }

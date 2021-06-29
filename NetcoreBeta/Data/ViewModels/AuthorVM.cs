@@ -9,4 +9,9 @@ namespace NetcoreBeta.Data.ViewModels
     {
         public string FullName { get; set; }
     }
+    public class AuthorVMWithBooks
+    {
+        public string FullName { get; set; }
+        public List<string> BooksTitle { get; set; }
+    }
 }

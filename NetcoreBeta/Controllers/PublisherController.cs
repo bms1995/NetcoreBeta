@@ -21,7 +21,46 @@ namespace NetcoreBeta.Controllers
         [HttpPost("add-publisher")]
         public IActionResult AddBook([FromBody] PublisherVM publisher)
         {
-            _publishersService.AddPublisher(publisher);
+           var _publisher= _publishersService.AddPublisher(publisher);
+            return Created(nameof(AddBook),_publisher);
+
+        }
+
+        [HttpGet("Get-publisher-by-id/{id}")]
+        public IActionResult GetPublisherById(int id)
+        {
+            var publisher = _publishersService.getPublisherById(id);
+            if(publisher != null)
+            {
+                return Ok(publisher);
+            }
+            else
+            {
+              return  NotFound();
+            }
+           
+
+        }
+        [HttpGet("Get-publisher-with-books-and-authors/{id}")]
+        public IActionResult GetPublisherwithBooksandAuthors(int id)
+        {
+            try
+            {
+                var publisher = _publishersService.getPublishers(id);
+                return Ok(publisher);
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
+          
+
+        }
+        [HttpDelete("delete-publisher/{id}")]
+        public IActionResult DeletePublisher(int id)
+        {
+            _publishersService.DeletePublisher(id);
             return Ok();
 
         }

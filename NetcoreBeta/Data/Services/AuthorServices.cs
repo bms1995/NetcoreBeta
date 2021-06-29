@@ -24,5 +24,15 @@ namespace NetcoreBeta.Data.Services
             _context.Authors.Add(_author);
             _context.SaveChanges();
         }
+
+        public AuthorVMWithBooks GetAuthorWithBooks(int authorId)
+        {
+            var _author = _context.Authors.Where(x => x.Id == authorId).Select(n => new AuthorVMWithBooks()
+            {
+                FullName = n.FullName,
+                BooksTitle = n.Book_Authors.Select(x => x.Book.Title).ToList(),
+            }).FirstOrDefault();
+            return _author;
+        }
     }
 }
