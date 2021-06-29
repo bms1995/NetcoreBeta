@@ -26,7 +26,6 @@ namespace NetcoreBeta.Data
                         DateRead = DateTime.Now.AddDays(-10),
                         Rate = 5,
                         Genre = "history",
-                        Author = "avftt",
                         CoverUrl = "https://",
                         DateAdded = DateTime.Now
 
@@ -37,7 +36,6 @@ namespace NetcoreBeta.Data
                         Description = "1st boo, descroption",
                         IsRead = false,
                         Genre = "history",
-                        Author = "avftt",
                         CoverUrl = "https://",
                         DateAdded = DateTime.Now
                     }

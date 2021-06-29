@@ -35,6 +35,8 @@ namespace NetcoreBeta
             services.AddControllers();
             // Configure services
             services.AddTransient<BooksService>();
+            services.AddTransient<AuthorServices>();
+            services.AddTransient<PublisherServices>();
             // configure DBcontext with SQL SERVER
             services.AddDbContext<AppDBContext>(options => options.UseSqlServer(ConnectionString));
 
