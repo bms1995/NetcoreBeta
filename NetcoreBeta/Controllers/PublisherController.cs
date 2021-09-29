@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using NetcoreBeta.Data.Models;
 using NetcoreBeta.Data.Services;
 using NetcoreBeta.Data.ViewModels;
 using System;
@@ -27,12 +28,12 @@ namespace NetcoreBeta.Controllers
         }
 
         [HttpGet("Get-publisher-by-id/{id}")]
-        public IActionResult GetPublisherById(int id)
+        public ActionResult<Publisher> GetPublisherById(int id)
         {
             var publisher = _publishersService.getPublisherById(id);
             if(publisher != null)
             {
-                return Ok(publisher);
+                return publisher;
             }
             else
             {
